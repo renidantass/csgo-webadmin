@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar servidor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <div class="row">
+        <div class="column">
+            <div class="sidebar bg-blurred border-shadow">
+                <img class="menu-item" id="play" src="images/csgo_logo.svg" alt="Competitivo 5v5">
+                <div class="divider"></div>
+                <ul>
+                    <li>
+                        <img class="menu-item" id="knife" src="images/ri_knife-fill.svg" alt="Round faca">
+                    </li>
+                    <li>
+                        <img class="menu-item" id="swapTeam"  src="images/ic_outline-group.svg" alt="Mudar time">
+                    </li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    <li>
+                        <img class="menu-item" id="restart" src="images/Group.svg" alt="Recomeçar o jogo">
+                    </li>
+                    <li>
+                        <img class="menu-item" id="serverStatus" src="images/gridicons_stats-down.svg" alt="Atualizar status">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column m5 t5">
+            <div class="card bg-blurred">
+                <div class="card-body">
+                    <h1>Servidor - <span id="hostname"></span></h1>
+                    <div class="info">
+                        <p>Mapa <span id="map">nenhum</span></p>
+                        <p>Jogadores <span id="players">0</span></p>
+                        <p>NET <span id="ip"></span></p>
+                        <p>OS <span id="os"></span></p>
+                        <p>Última vez atualizado em <span id="last_update"></span> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column m5 t5">
+            <div class="card console-style">
+                <textarea id="commands" readonly></textarea>
+                <div class="row justify-space-between" id="custom-area">
+                    <div class="column" id="custom-command">
+                        <input list="availableCommands" id="command" type="text" placeholder="Comando">
+                        <datalist id="availableCommands">
+                            <option value="changelevel de_dust2">
+                            <option value='mp_teamname_1 "Nome do CT"'>
+                            <option value='mp_teamname_2 "Nome do TR"'>
+                            <option value="mp_restartgame 1">
+                            <option value="sv_pausable 1"></option>
+                            <option value="mp_pause_game">
+                            <option value="mp_unpause_game">
+                            <option value="mp_warmup_start"></option>
+                            <option value="mp_warmup_end"></option>
+                            <option value='say "mensagem"'></option>
+                        </datalist>
+                    </div>
+                    <div class="column" id="send-command">
+                        <input id="send" type="button" value="Enviar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
