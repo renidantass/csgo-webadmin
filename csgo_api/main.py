@@ -1,7 +1,11 @@
 from flask import Flask, json, jsonify, request
 from flask_restful import reqparse, abort, Api, Resource
 from flask_cors import CORS
-from rcon import Client
+
+if __name__ == '__main__':
+    from rcon import Client
+else:
+    from .rcon import Client
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"*": {"origins": "*"}})
