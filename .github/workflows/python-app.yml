@@ -25,3 +25,7 @@ jobs:
     - name: Testing with unittest
       run: |
         python -m unittest discover -s tests
+    env:
+          IP_ADDRESS: 189.126.105.143
+          CSGO_PORT: 27015
+          PASSWORD: changeme
