@@ -1,12 +1,12 @@
 from flask import Flask, json, jsonify, request
 from flask_restful import reqparse, abort, Api, Resource
 from flask_cors import CORS
-from rcon import Client
+from .rcon import Client
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"*": {"origins": "*"}})
 api = Api(app)
-rcon_client = Client()
+client = Client()
 
 
 def throw_none_if_no_command_or_just_return_command(json_data):
@@ -21,7 +21,7 @@ class Command(Resource):
         command = throw_none_if_no_command_or_just_return_command(json_data)
 
         if (command is not None) and (len(command) > 0):
-            response = rcon_client.send_command(command)
+            response = client.send_command(command)
             return { "message": response }
         else:
             return {
