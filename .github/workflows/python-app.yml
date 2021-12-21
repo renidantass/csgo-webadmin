@@ -1,0 +1,31 @@
+name: CSGO WebAdmin
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flask flask-restful flask-cors python-valve python-decouple
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Testing with unittest
+      run: |
+        python -m unittest discover -s tests
+    env:
+          IP_ADDRESS: 189.126.105.143
+          CSGO_PORT: 27015
+          PASSWORD: changeme
