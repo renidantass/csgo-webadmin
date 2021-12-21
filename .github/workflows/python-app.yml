@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flask flask-restful flask-cors python-valve
+        pip install flask flask-restful flask-cors python-valve decouple
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Testing with unittest
       run: |
