@@ -44,7 +44,7 @@ const updateStatus = (response_received) => {
 
 const send = (id, command, notNotify) => {
     const console = document.querySelector('#commands');
-    const endpoint = "http://127.0.0.1:5000/send-command";
+    const endpoint = "http://144.22.224.141:5001/send-command";
     const data = {
         command
     };
