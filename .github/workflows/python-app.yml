@@ -40,11 +40,10 @@ jobs:
           local_dir: "csgo_api/"
           remote_dir: "/home/ubuntu/dev/csgo_webadmin"
       run: |
-          mkdir ~/.ssh
-          echo "$remote_key" > ~/.ssh/id_github
-          chmod 600 ~/.ssh/id_github
+          echo "$remote_key" > ssh.key
+          chmod 600 ssh.key
           echo "$dev_env_file" > .env
           chmod 600 .env
-          rsync -avzr --delete -e "ssh -p ${remote_port} -i ~/.ssh/id_github -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
+          rsync -avzr --delete -e "ssh -p ${remote_port} -i ssh.key -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
           rm ~/.ssh/id_github
         
