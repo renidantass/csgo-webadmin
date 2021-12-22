@@ -40,4 +40,4 @@ jobs:
           script: |
               mkdir test
               cd test
-              git clone https://github.com/renidantass/csgo-webadmin.git
+              git clone git@github.com:renidantass/csgo-webadmin.git
