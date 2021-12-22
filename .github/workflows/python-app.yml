@@ -31,13 +31,13 @@ jobs:
           PASSWORD: changeme
           
     - name: Deploy
-      env:
-          remote_host: ${{ secrets.DEPLOY_HOST }}
-          remote_port: 22
-          remote_user: ${{ secrets.DEPLOY_USER }}
-          remote_key: ${{ secrets.DEPLOYKEY }}
-          dev_env_file: ${{ secrets.DEVENVFILE }}
-          remote_dir: "/home/ubuntu/dev"
-      run: |
-          cd ${remote_dir}
-          git clone https://github.com/renidantass/csgo-webadmin.git
+      uses: appleboy/ssh-action@v0.1.2
+      with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOYKEY }}
+          
+          script: |
+              mkdir test
+              cd test
+              git clone https://github.com/renidantass/csgo-webadmin.git
