@@ -37,13 +37,7 @@ jobs:
           remote_user: ${{ secrets.DEPLOY_USER }}
           remote_key: ${{ secrets.DEPLOYKEY }}
           dev_env_file: ${{ secrets.DEVENVFILE }}
-          local_dir: "csgo_api/"
-          remote_dir: "/home/ubuntu/dev/csgo_webadmin"
+          remote_dir: "/home/ubuntu/dev"
       run: |
-          echo "$remote_key" > ssh.key
-          chmod 600 ssh.key
-          echo "$dev_env_file" > .env
-          chmod 600 .env
-          rsync -avzr --delete -e "ssh -p ${remote_port} -i ssh.key -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
-          rm ~/.ssh/id_github
-        
+          cd ${remote_dir}
+          git clone https://github.com/renidantass/csgo-webadmin.git
