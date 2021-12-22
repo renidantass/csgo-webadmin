@@ -33,7 +33,7 @@ jobs:
     - name: Deploy
       env:
           remote_host: ${{ secrets.DEPLOY_HOST }}
-          remote_port: ${{ secrets.DEPLOY_PORT }}
+          remote_port: 22
           remote_user: ${{ secrets.DEPLOY_USER }}
           remote_key: ${{ secrets.DEPLOYKEY }}
           dev_env_file: ${{ secrets.DEVENVFILE }}
