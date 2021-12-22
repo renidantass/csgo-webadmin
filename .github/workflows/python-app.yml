@@ -29,15 +29,12 @@ jobs:
           IP_ADDRESS: 189.126.105.143
           CSGO_PORT: 27015
           PASSWORD: changeme
-          
-    - name: Deploy
-      uses: appleboy/ssh-action@v0.1.2
+    - name: Copy folder content recursively to remote
+      uses: garygrossgarten/github-action-scp@release
       with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOYKEY }}
-          
-          script: |
-              mkdir test
-              cd test
-              git clone git@github.com:renidantass/csgo-webadmin.git
+        local: .
+        remote: /home/ubuntu/dev/csgo_webadmin
+        host: ${{ secrets.DEPLOY_HOST }}
+        port: 59666
+        username: ${{ secrets.DEPLOY_USER }}
+        privateKey: ${{ secrets.DEPLOYKEY }}
