@@ -25,7 +25,26 @@ jobs:
     - name: Testing with unittest
       run: |
         python -m unittest discover -s tests
-    env:
+      env:
           IP_ADDRESS: 189.126.105.143
           CSGO_PORT: 27015
           PASSWORD: changeme
+          
+    - name: Deploy
+      env:
+          remote_host: ${{ secrets.DEPLOY_HOST }}
+          remote_port: ${{ secrets.DEPLOY_PORT }}
+          remote_user: ${{ secrets.DEPLOY_USER }}
+          remote_key: ${{ secrets.DEPLOYKEY }}
+          dev_env_file: ${{ secrets.DEVENVFILE }}
+          local_dir: "csgo_api/"
+          remote_dir: "/csgo_api"
+      run: |
+          mkdir ~/.ssh
+          echo "$remote_key" > ~/.ssh/id_github
+          chmod 600 ~/.ssh/id_github
+          echo "$dev_env_file" > .env
+          chmod 600 .env
+          rsync -avzr --delete -e "ssh -p ${remote_port} -i ~/.ssh/id_github -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
+          rm ~/.ssh/id_github
+        
