@@ -38,7 +38,7 @@ jobs:
           remote_key: ${{ secrets.DEPLOYKEY }}
           dev_env_file: ${{ secrets.DEVENVFILE }}
           local_dir: "csgo_api/"
-          remote_dir: "/csgo_api"
+          remote_dir: "/home/ubuntu/dev/csgo_webadmin"
       run: |
           mkdir ~/.ssh
           echo "$remote_key" > ~/.ssh/id_github
