@@ -37,7 +37,7 @@ jobs:
           remote_key: ${{ secrets.DEPLOYKEY }}
           dev_env_file: ${{ secrets.DEVENVFILE }}
           api_dir: "csgo_api"
-          front_dir: "csgo_api"
+          front_dir: "csgo_webapp"
           remote_api_dir: "/home/ubuntu/dev/csgo_webadmin"
           remote_front_dir: "/var/www/html"
       run: |
